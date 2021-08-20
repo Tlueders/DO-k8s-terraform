@@ -1,7 +1,7 @@
-resource "digitalocean_kubernetes_cluster" "joinpenguin" {
+resource "digitalocean_kubernetes_cluster" "cluster" {
   name   = "joinpenguin"
   region = "sfo3"
-  version = "1.21.2-do.1"
+  version = "1.21.2-do.2"
 
   node_pool {
     name       = "worker-pool"
@@ -9,11 +9,5 @@ resource "digitalocean_kubernetes_cluster" "joinpenguin" {
     auto_scale = true
     min_nodes  = 1
     max_nodes  = 2
-
-    taint {
-      key    = "workloadKind"
-      value  = "database"
-      effect = "NoSchedule"
-    }
   }
 }
